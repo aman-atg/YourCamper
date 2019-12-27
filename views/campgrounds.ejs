@@ -1,0 +1,15 @@
+<h1> This is the <em>fucking</em> campground listing page</h1>
+ 
+    <% campgrounds.forEach(function(campground){ %>
+     
+        <div class = camps>
+            
+            <h4>
+                <%= campground.name %>
+            </h4>
+            
+            <img src='<%=campground.img%>'>
+
+        </div>
+
+    <% }); %>
