@@ -31,6 +31,23 @@ var Campground = mongoose.model("Campground",campgroundSchema)
 
 // =========================== >> DATABASE-MANAGEMENT << ==============================
 
+/* Creating a campground */
+/*Campground.create(
+    {
+        name        :   "Granite Hill",
+        image       :   "https://pixabay.com/get/52e3d3404a55af14f6da8c7dda793f7f1636dfe2564c704c72287fd79249c459_340.png",
+        description :   "This is a nice description about the above fictional campground for pokemons and toy story fans....nyc...really nice"
+    },
+    function (err,campground){  
+        if(err) console.log(err);
+        else
+        {
+            console.log("New created campground");
+            console.log(campground);
+        }
+    });
+*/
+
 
 
 
@@ -38,10 +55,12 @@ var Campground = mongoose.model("Campground",campgroundSchema)
 
 // ============================ >>  ROUTES  << ========================================
 
+/*    HOME    */
 app.get('/',function (req,res) {  
     res.render('landing');
 });
 
+/*  SHOWING ALL THE CAMPGROUNDS */
 app.get('/campgrounds',function (req,res) {  
     // Get all the campgrounds from DB
     Campground.find({}, function (err,allCampgrounds){  
@@ -52,7 +71,8 @@ app.get('/campgrounds',function (req,res) {
     });
     
 });
- 
+
+/*  CREATING A NEW CAMPGROUND */
 app.post('/campgrounds',function(req, res){
     // get data from form and add to campgrounds array 
     var name = req.body.name;
@@ -72,8 +92,14 @@ app.post('/campgrounds',function(req, res){
 
 });
 
+/* FORM FOR ADDING NEW CAMPGROUND */
 app.get('/campgrounds/new',function (req, res){
     res.render("new.ejs");
+});
+
+app.get("/campgrounds/:id",(req,res)=>{
+
+    res.render("show");
 });
 
 // ============================ >> END OF ROUTES << ========================================
