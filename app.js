@@ -1,4 +1,4 @@
-// ! img https://pixabay.com/get/52e3d3404a55af14f6da8c7dda793f7f1636dfe2564c704c72287fd79249c459_340.png
+// ! img https://www.photosforclass.com/download/pixabay-4363073?webUrl=https%3A%2F%2Fpixabay.com%2Fget%2F52e3d3404a55af14f6da8c7dda793f7f1636dfe2564c704c72287ed6924ecd5f_960.png&user=bowl_of_nicole
 // ! why the fuck my shift + . not working sometimes 
 
 
@@ -35,7 +35,7 @@ var Campground = mongoose.model("Campground",campgroundSchema)
 /*Campground.create(
     {
         name        :   "Granite Hill",
-        image       :   "https://pixabay.com/get/52e3d3404a55af14f6da8c7dda793f7f1636dfe2564c704c72287fd79249c459_340.png",
+        image       :   "https://www.photosforclass.com/download/pixabay-4363073?webUrl=https%3A%2F%2Fpixabay.com%2Fget%2F52e3d3404a55af14f6da8c7dda793f7f1636dfe2564c704c72287ed6924ecd5f_960.png&user=bowl_of_nicole",
         description :   "This is a nice description about the above fictional campground for pokemons and toy story fans....nyc...really nice"
     },
     function (err,campground){  
@@ -66,7 +66,7 @@ app.get('/campgrounds',function (req,res) {
     Campground.find({}, function (err,allCampgrounds){  
         if(err)console.log(err);
         else{
-            res.render("campgrounds",{campgrounds:allCampgrounds});
+            res.render("index",{campgrounds:allCampgrounds});
         }
     });
     
@@ -75,10 +75,10 @@ app.get('/campgrounds',function (req,res) {
 /*  CREATING A NEW CAMPGROUND */
 app.post('/campgrounds',function(req, res){
     // get data from form and add to campgrounds array 
-    var name = req.body.name;
-    var image= req.body.image;
-    console.log(name);
-    var newCampG = { name : name, image : image};
+    var name    = req.body.name;
+    var image   = req.body.image;
+    var desc    = req.body.description;
+    var newCampG = { name : name, image : image, description : desc};
     Campground.create(newCampG,function (err,newlyCreated) {  
         if(err){
             console.log("fuck");
@@ -98,8 +98,16 @@ app.get('/campgrounds/new',function (req, res){
 });
 
 app.get("/campgrounds/:id",(req,res)=>{
-
-    res.render("show");
+    var id = req.params.id;
+    // find the campground with provided ID
+    Campground.findById(id,function (err,foundCampground) {  
+        if(err) console.log(err);
+        else
+        {   // showing the requested data
+            res.render("show",{campground:foundCampground});
+        }
+    });
+  
 });
 
 // ============================ >> END OF ROUTES << ========================================
