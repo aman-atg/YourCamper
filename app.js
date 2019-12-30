@@ -6,8 +6,8 @@ var express     = require('express'),
     app         = express(),
     bodyParser  = require('body-parser'),
     mongoose    = require('mongoose'),
-// ============= CAMPGROUND-MODEL =============== 
-    Campground  = require('./models/campground');
+    Campground  = require('./models/campground'),
+    seedDB      = require('./seeds'); seedDB();
 
 // ================================================ //
 app.use(bodyParser.urlencoded({extended:true}));  
@@ -21,33 +21,6 @@ app.set("view engine",'ejs');
       useCreateIndex: true,
       useUnifiedTopology: true
     });
-
-
-
-
-// =========================== >> DATABASE-MANAGEMENT << ==============================
-
-/* Creating a campground */
-/*Campground.create(
-    {
-        name        :   "Granite Hill",
-        image       :   "https://www.photosforclass.com/download/pixabay-4363073?webUrl=https%3A%2F%2Fpixabay.com%2Fget%2F52e3d3404a55af14f6da8c7dda793f7f1636dfe2564c704c72287ed6924ecd5f_960.png&user=bowl_of_nicole",
-        description :   "This is a nice description about the above fictional campground for pokemons and toy story fans....nyc...really nice"
-    },
-    function (err,campground){  
-        if(err) console.log(err);
-        else
-        {
-            console.log("New created campground");
-            console.log(campground);
-        }
-    });
-*/
-
-
-
-
-// =========================== >> END OF DB-MANAGEMENT << =============================
 
 // ============================ >>  ROUTES  << ========================================
 
@@ -77,7 +50,7 @@ app.post('/campgrounds',function(req, res){
     var newCampG = { name : name, image : image, description : desc};
     Campground.create(newCampG,function (err,newlyCreated) {  
         if(err){
-            console.log("fuck");
+            console.log(err);
         }else
         {   
             console.log(newlyCreated);
@@ -93,10 +66,11 @@ app.get('/campgrounds/new',function (req, res){
     res.render("new.ejs");
 });
 
+/*  Show Route */
 app.get("/campgrounds/:id",(req,res)=>{
     var id = req.params.id;
     // find the campground with provided ID
-    Campground.findById(id,function (err,foundCampground) {  
+    Campground.findById(id).populate("comments").exec(function (err,foundCampground) {  
         if(err) console.log(err);
         else
         {   // showing the requested data
