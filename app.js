@@ -80,6 +80,14 @@ app.get("/campgrounds/:id",(req,res)=>{
   
 });
 
+/* New Comment form*/
+app.get('/campgrounds/:id/comments/new', (req, res) => {
+    res.render("show");
+});
+
+/*  Create New Comment */
+
+
 // ============================ >> END OF ROUTES << ========================================
 
 
