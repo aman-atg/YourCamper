@@ -5,7 +5,9 @@
 var express     = require('express'),
     app         = express(),
     bodyParser  = require('body-parser'),
-    mongoose    = require('mongoose');
+    mongoose    = require('mongoose'),
+// ============= CAMPGROUND-MODEL =============== 
+    Campground  = require('./models/campground');
 
 // ================================================ //
 app.use(bodyParser.urlencoded({extended:true}));  
@@ -20,14 +22,8 @@ app.set("view engine",'ejs');
       useUnifiedTopology: true
     });
 
-// ============== CAMPGROUND-SCHEMA ======================
-var campgroundSchema = new mongoose.Schema({
-    name        : String,
-    image       : String,
-    description : String
-});
-// ============= CAMPGROUND-MODEL ======================== 
-var Campground = mongoose.model("Campground",campgroundSchema)
+
+
 
 // =========================== >> DATABASE-MANAGEMENT << ==============================
 
@@ -105,7 +101,7 @@ app.get("/campgrounds/:id",(req,res)=>{
         else
         {   // showing the requested data
             res.render("show",{campground:foundCampground});
-        }
+        } 
     });
   
 });
