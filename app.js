@@ -6,9 +6,12 @@ var express     = require('express'),
     app         = express(),
     bodyParser  = require('body-parser'),
     mongoose    = require('mongoose'),
+    passport    = require('passport'),
+    LocalStrategy=require('passport-local'),
     Campground  = require('./models/campground'),
     seedDB      = require('./seeds'),
-    Comment     = require('./models/comment');
+    Comment     = require('./models/comment'),
+    User        = require('./models/user');
 // ================================================ //
 app.use(bodyParser.urlencoded({extended:true}));  
 app.set("view engine",'ejs');
@@ -22,6 +25,21 @@ seedDB();
       useCreateIndex: true,
       useUnifiedTopology: true
     });
+
+// =========================== >> PASSPORT-CONFIG << ==================================
+app.use(require('express-session')({
+    secret              :   "Finally this is going to be completed...And BTW Happy New Year",
+    resave              :   false,
+    saveUninitialized   :   false
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
+
+// =========================== >> E-O-PASSPORT-CONFIG << =============================
 
 // ============================ >>  ROUTES  << ========================================
 
@@ -115,6 +133,27 @@ app.post('/campgrounds/:id/comments', (req, res) => {
         }
     });
 });
+                                //  ===========  //
+                                //  AUTH ROUTES  //
+                                //  ===========  //
+// SHOW REGISTER FORM
+app.get('/register', (req, res) => {
+return 	res.render("register");
+});
+
+app.post('/register', (req,res)=>{
+    var newUser = new User({username : req.body.username});
+    User.register(newUser, req.body.password, function (err, user) {  
+        if(err){
+            console.log(err);
+            return res.render("register");
+        }
+        passport.authenticate("local")(req, res, function(){
+            res.redirect("/campgrounds");
+        });
+    });
+});
+
 
 // ============================ >> END OF ROUTES << ========================================
 
