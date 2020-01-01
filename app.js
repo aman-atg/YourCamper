@@ -3,6 +3,7 @@ var express     = require('express'),
     bodyParser  = require('body-parser'),
     mongoose    = require('mongoose'),
     passport    = require('passport'),
+    methodOverride = require('method-override'),
     LocalStrategy=require('passport-local'),
     seedDB      = require('./seeds'),
     Campground  = require('./models/campground'),
@@ -17,6 +18,7 @@ var commentRoutes       =   require('./routes/comments'),
 app.use(bodyParser.urlencoded({extended:true}));  
 app.set("view engine",'ejs');
 app.use(express.static(__dirname + "/public"));
+app.use(methodOverride("_method"));
 //seedDB(); seed the database
 // ================================================ //
     mongoose.connect(
@@ -47,8 +49,7 @@ app.use(function (req,res,next) {
 
 app.use("/",indexRoutes);
 app.use("/campgrounds/:id/comments",commentRoutes);
-app.use("/campgrounds",campgroundRoutes)
-
+app.use("/campgrounds",campgroundRoutes);
 // ============= LISTENING =============
 app.listen(3000,function(){
     console.log('listening to 3000 ...');
