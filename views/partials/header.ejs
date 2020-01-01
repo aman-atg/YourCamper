@@ -28,10 +28,10 @@
                       <li class=""><a href="/login">Login</a></li>
                       <li class=""><a href="/register">Sign Up</a></li>
                   <%  } else {  %>
+                        <li ><a href="#">Signed In As <%=currentUser.username%></a></li>
                         <li class=""><a href="/logout">Logout</a> </li>
                   <%  } %>
               </ul>
             </div>
         </div>
     </nav>
-        
