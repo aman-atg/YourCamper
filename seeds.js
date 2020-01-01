@@ -24,7 +24,7 @@ var data  = [
 function seedDB(){
     // REMOVED ALL CAMPGROUNDS
     Campground.remove({},(err)=>{
-        if(err) console.log(err);
+/*      if(err) console.log(err);
         console.log("Removed Campgrounds!");
     });
     // ADDING NEW CAMPGROUNDS
@@ -47,7 +47,7 @@ function seedDB(){
                             }
                 });
             }
-        });
+        }); */
     });
 }
 
