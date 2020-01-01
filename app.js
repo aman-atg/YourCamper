@@ -38,7 +38,10 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-
+app.use(function (req,res,next) {  
+    res.locals.currentUser  =   req.user;
+    next();
+});
 // =========================== >> E-O-PASSPORT-CONFIG << =============================
 
 // ============================ >>  ROUTES  << ========================================
@@ -100,7 +103,7 @@ app.get("/campgrounds/:id",(req,res)=>{
 });
 
 /* New Comment form*/
-app.get('/campgrounds/:id/comments/new', (req, res) => {
+app.get('/campgrounds/:id/comments/new',isLoggedIn, (req, res) => {
     Campground.findById(req.params.id,(err, campground)=>{
         if(err) console.log(err);
         else
@@ -112,7 +115,7 @@ app.get('/campgrounds/:id/comments/new', (req, res) => {
 });
 
 /*  Create New Comment */
-app.post('/campgrounds/:id/comments', (req, res) => {
+app.post('/campgrounds/:id/comments',isLoggedIn, (req, res) => {
     Campground.findById(req.params.id,(err, campground)=>{
         if(err)
         {
@@ -153,8 +156,31 @@ app.post('/register', (req,res)=>{
         });
     });
 });
+// SHOW LOGIN FROM
+app.get('/login', (req, res) => {
+return 	res.render("login");
+});
 
+// POST for login
+app.post('/login', passport.authenticate("local",
+    {   successRedirect   : "/campgrounds",
+        failureRedirect   : "/login"
+    }),(req, res) => {
+        
+});
 
+// Logout route
+app.get('/logout', (req, res) => {
+    req.logout();
+    res.redirect("/campgrounds");
+});
+
+function isLoggedIn(req,res,next) {  
+    if(req.isAuthenticated()){
+        return next();
+    }
+    res.redirect("/login");
+}
 // ============================ >> END OF ROUTES << ========================================
 
 

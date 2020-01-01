@@ -24,10 +24,12 @@
                 <li><a href="/campgrounds">Home</a></li>
               </ul>
               <ul class="nav navbar-nav navbar-right">
-                  
+                  <% if (!currentUser){ %>
                       <li class=""><a href="/login">Login</a></li>
                       <li class=""><a href="/register">Sign Up</a></li>
-                  
+                  <%  } else {  %>
+                        <li class=""><a href="/logout">Logout</a> </li>
+                  <%  } %>
               </ul>
             </div>
         </div>
