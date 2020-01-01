@@ -45,4 +45,8 @@ function isLoggedIn(req,res,next) {
     res.redirect("/login");
 }
 
+router.get('/:comment_id/edit', (req, res) => {
+    res.render("");
+});
+
 module.exports = router;
