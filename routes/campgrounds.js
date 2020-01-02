@@ -61,7 +61,8 @@ router.get('/:id/edit', middleware.checkCampgroundOwnership, (req, res) => {
     });
 });
 // PUT 
-router.put('/:id', middleware.checkCampgroundOwnership, middleware.checkImg , (req, res) => {
+router.put('/:id', middleware.checkCampgroundOwnership,middleware.checkImg2, (req, res) => {
+ 
     Campground.findByIdAndUpdate(req.params.id, req.body.campground, (err, updatedCampground)=>{
         if(err) 
             res.redirect("/campgrounds");
