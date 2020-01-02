@@ -22,9 +22,10 @@ app.use(methodOverride("_method"));
 app.use(flash());
 //seedDB(); seed the database
 // ================================================ //
+
     mongoose.connect(
-        process.env.DATABASEURL
-    , {
+    process.env.DATABASEURL || 'mongodb://localhost/yelp_camp?retryWrites=true&w=majority' ,
+    {
       useNewUrlParser: true,
       useCreateIndex: true,
       useUnifiedTopology: true
@@ -52,6 +53,6 @@ app.use("/",indexRoutes);
 app.use("/campgrounds/:id/comments",commentRoutes);
 app.use("/campgrounds",campgroundRoutes);
 // ============= LISTENING =============
-app.listen(3000,function(){
-    console.log('listening to 3000 ...');
+app.listen(process.env.PORT || 5000,()=>{
+    console.log("Listening to YourCamper Server.");
 });
