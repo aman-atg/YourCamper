@@ -11,7 +11,8 @@ var express     = require('express'),
 
 var commentRoutes       =   require('./routes/comments'),
     campgroundRoutes    =   require('./routes/campgrounds'),
-    indexRoutes         =   require('./routes/index');
+    indexRoutes         =   require('./routes/index'),
+    contactUS           =   require('./routes/contact-us');
 // ================================================ //
 app.use(bodyParser.urlencoded({extended:true}));  
 app.set("view engine",'ejs');
@@ -51,6 +52,7 @@ app.use(function (req,res,next) {
 app.use("/",indexRoutes);
 app.use("/campgrounds/:id/comments",commentRoutes);
 app.use("/campgrounds",campgroundRoutes);
+app.use("/contact-us",contactUS);
 // ============= LISTENING =============
 app.listen(process.env.PORT || 5000,()=>{
     console.log("Listening to YourCamper Server.");
