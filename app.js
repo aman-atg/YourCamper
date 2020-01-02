@@ -2,6 +2,7 @@ var express     = require('express'),
     app         = express(),
     bodyParser  = require('body-parser'),
     mongoose    = require('mongoose'),
+    flash       = require('connect-flash'),
     passport    = require('passport'),
     methodOverride = require('method-override'),
     LocalStrategy=require('passport-local'),
@@ -13,12 +14,12 @@ var express     = require('express'),
 var commentRoutes       =   require('./routes/comments'),
     campgroundRoutes    =   require('./routes/campgrounds'),
     indexRoutes         =   require('./routes/index');
-
 // ================================================ //
 app.use(bodyParser.urlencoded({extended:true}));  
 app.set("view engine",'ejs');
 app.use(express.static(__dirname + "/public"));
 app.use(methodOverride("_method"));
+app.use(flash());
 //seedDB(); seed the database
 // ================================================ //
     mongoose.connect(
@@ -28,7 +29,6 @@ app.use(methodOverride("_method"));
       useCreateIndex: true,
       useUnifiedTopology: true
     });
-
 // =========================== >> PASSPORT-CONFIG << ==================================
 app.use(require('express-session')({
     secret              :   "Finally this is going to be completed...And BTW Happy New Year",
@@ -40,12 +40,12 @@ app.use(passport.session());
 passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
-
+// =========================== >> E-O-PASSPORT-CONFIG << =============================
 app.use(function (req,res,next) {  
     res.locals.currentUser  =   req.user;
+    res.locals.message      =   req.flash("error");
     next();
 });
-// =========================== >> E-O-PASSPORT-CONFIG << =============================
 
 app.use("/",indexRoutes);
 app.use("/campgrounds/:id/comments",commentRoutes);
