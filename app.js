@@ -23,7 +23,7 @@ app.use(flash());
 //seedDB(); seed the database
 // ================================================ //
     mongoose.connect(
-    'mongodb://localhost/yelp_camp'
+        process.env.DATABASEURL
     , {
       useNewUrlParser: true,
       useCreateIndex: true,
