@@ -2,7 +2,7 @@ var router      = require('express').Router();
 var Campground  = require('../models/campground');
 var middleware  = require('../middleware');
 /*  SHOWING ALL THE CAMPGROUNDS */
-router.get('',function (req,res) {  
+router.get('/',function (req,res) {  
     Campground.find({}, function (err,allCampgrounds){  
         if(err)console.log(err);
         else{
@@ -12,7 +12,7 @@ router.get('',function (req,res) {
 });
 
 /*  CREATING A NEW CAMPGROUND */
-router.post('/', middleware.isLoggedIn, function(req, res){
+router.post('/', middleware.isLoggedIn, middleware.checkImg, function(req, res){
     var newCampG = 
     { 
         name        : req.body.name,
@@ -61,7 +61,7 @@ router.get('/:id/edit', middleware.checkCampgroundOwnership, (req, res) => {
     });
 });
 // PUT 
-router.put('/:id', middleware.checkCampgroundOwnership, (req, res) => {
+router.put('/:id', middleware.checkCampgroundOwnership, middleware.checkImg , (req, res) => {
     Campground.findByIdAndUpdate(req.params.id, req.body.campground, (err, updatedCampground)=>{
         if(err) 
             res.redirect("/campgrounds");

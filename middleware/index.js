@@ -2,7 +2,7 @@ var Campground = require("../models/campground"),
     Comment    = require("../models/comment");
 // ALL MIDDLEWARES
 var middlewareObj ={};
-
+    // CAMPGROUND OWNERSHIP
 middlewareObj.checkCampgroundOwnership = function(req,res,next) {  
     if(req.isAuthenticated()){
         Campground.findById(req.params.id, (err, foundCampground)=>{
@@ -29,7 +29,7 @@ middlewareObj.checkCampgroundOwnership = function(req,res,next) {
     }
 
 }
-
+    // COMMENT OWNERSHIP
 middlewareObj.checkCommentOwnership = function(req,res,next) {  
     if(req.isAuthenticated()){
         Comment.findById(req.params.comment_id, (err, foundComment)=>{
@@ -55,13 +55,23 @@ middlewareObj.checkCommentOwnership = function(req,res,next) {
     }
     
 }
-
+    // LOGGED IN OR NOT
 middlewareObj.isLoggedIn  = function (req,res,next) {  
     if(req.isAuthenticated()){
         return next();
     }
     req.flash("error","You need to be logged in to do that!");
     res.redirect("/login");
+}
+    // IMAGE URL VALID OR NOT
+middlewareObj.checkImg  =   function (req,res,next){
+    if(req.body.image.match(/\.(jpeg|jpg|gif|png)$/) != null){
+        //url valid
+        next();
+    }else{
+        req.flash("error","Image URL is invalid!");
+        res.redirect("back");
+    }
 }
 
 
