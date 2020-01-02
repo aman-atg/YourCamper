@@ -47,7 +47,7 @@ app.use(function (req,res,next) {
     res.locals.success      =   req.flash("success");
     next();
 });
-
+ // app.use('/favicon.ico', express.static('favicon.ico'));
 app.use("/",indexRoutes);
 app.use("/campgrounds/:id/comments",commentRoutes);
 app.use("/campgrounds",campgroundRoutes);
