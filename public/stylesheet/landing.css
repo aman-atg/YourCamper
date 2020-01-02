@@ -38,22 +38,26 @@ body {
 
 .slideshow li:nth-child(1) { 
     background-image: url(https://i.imgur.com/z5uS8MI.jpg) 
-  }
-  .slideshow li:nth-child(2) { 
-    background-image: url(https://i.imgur.com/16oRWiO.jpg);
-    animation-delay: 7s; 
-  }
-  .slideshow li:nth-child(3) { 
-    background-image: url(https://i.imgur.com/D2DMbEA.jpg);
-    animation-delay: 14s; 
-  }
-  .slideshow li:nth-child(4) { 
-    background-image: url(https://i.imgur.com/dghc8rv.jpg);
-    animation-delay: 21s; 
-  }
-  .slideshow li:nth-child(5) { 
-    background-image: url(https://i.imgur.com/O5fe9DC.jpg);
-    animation-delay: 28s; 
+}
+.slideshow li:nth-child(2) { 
+  background-image: url(https://i.imgur.com/16oRWiO.jpg);
+  animation-delay: 7s; 
+}
+.slideshow li:nth-child(3) { 
+  background-image: url(https://i.imgur.com/D2DMbEA.jpg);
+  animation-delay: 14s; 
+}
+.slideshow li:nth-child(4) { 
+  background-image: url(https://i.imgur.com/dghc8rv.jpg);
+  animation-delay: 21s; 
+}
+.slideshow li:nth-child(5) { 
+  background-image: url(https://i.imgur.com/O5fe9DC.jpg);
+  animation-delay: 28s; 
+}
+.slideshow li:nth-child(6) { 
+  background-image: url(https://i.imgur.com/H5iAzne.jpg);
+  animation-delay: 35s; 
 }
 @keyframes imageAnimation { 
     0% { 
