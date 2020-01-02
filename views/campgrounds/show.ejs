@@ -12,10 +12,9 @@
             </div>
             <div class="col-md-9">
                 <div class="thumbnail">
-                    <img src="<%= campground.image %>" alt="" class="img-responsive">
+                    <img src="<%= campground.image %>" alt="Campgrounds" class="img-responsive">
                     <div class="caption-full">
-                        <h4 class="pull-right">RS 500/night</h4>
-                        <h4><a href=""> <%= campground.image %> </a> </h4>
+                        <h4><%=campground.name%></h4>
                         <p> <%= campground.description %> </p>
                         <p><em>Submitted by <%= campground.author.username %></em></p>
                         <%  if(currentUser && campground.author.id.equals(currentUser._id)){ %>
@@ -32,10 +31,9 @@
                     </div>
                     <hr>
                     <% campground.comments.forEach(function(comment){ %>
-                        <div class="row">
+                        <div id="comment" class="row">
                             <div class="col-md-12">
                                 <strong> <%= comment.author.username %> </strong> 
-                                <span class="pull-right">10 days ago</span>
                                 <p> <%= comment.text %> </p>
                                 <%  if(currentUser && comment.author.id.equals(currentUser._id)){ %>
                                 <a href="/campgrounds/<%=campground._id%>/comments/<%=comment._id%>/edit" class="btn btn-xs btn-warning">Edit</a>

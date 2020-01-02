@@ -10,3 +10,6 @@
 #delete-form , #dlt-btn{
     display: inline;
 }
+#comment{
+    margin-bottom: 15px;
+}
