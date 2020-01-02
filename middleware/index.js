@@ -65,6 +65,7 @@ middlewareObj.isLoggedIn  = function (req,res,next) {
 }
     // IMAGE URL VALID OR NOT
 middlewareObj.checkImg  =   function (req,res,next){
+
     if(req.body.image.match(/\.(jpeg|jpg|gif|png)$/) != null){
         //url valid
         next();
@@ -73,6 +74,18 @@ middlewareObj.checkImg  =   function (req,res,next){
         res.redirect("back");
     }
 }
+// FOR UPDATE
+middlewareObj.checkImg2  =   function (req,res,next){
+    
+    if(req.body.campground.image.match(/\.(jpeg|jpg|gif|png)$/) != null){
+        //url valid
+        next();
+    }else{
+        req.flash("error","Image URL is invalid!");
+        res.redirect("back");
+    }
+}
+
 
 
 module.exports  = middlewareObj;
