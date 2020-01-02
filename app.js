@@ -7,8 +7,6 @@ var express     = require('express'),
     methodOverride = require('method-override'),
     LocalStrategy=require('passport-local'),
     seedDB      = require('./seeds'),
-    Campground  = require('./models/campground'),
-    Comment     = require('./models/comment'),
     User        = require('./models/user');
 
 var commentRoutes       =   require('./routes/comments'),
@@ -19,6 +17,7 @@ app.use(bodyParser.urlencoded({extended:true}));
 app.set("view engine",'ejs');
 app.use(express.static(__dirname + "/public"));
 app.use(methodOverride("_method"));
+//app.use('/favicon.ico', express.static('favicon.ico'));
 app.use(flash());
 //seedDB(); seed the database
 // ================================================ //
@@ -48,7 +47,7 @@ app.use(function (req,res,next) {
     res.locals.success      =   req.flash("success");
     next();
 });
- // app.use('/favicon.ico', express.static('favicon.ico'));
+
 app.use("/",indexRoutes);
 app.use("/campgrounds/:id/comments",commentRoutes);
 app.use("/campgrounds",campgroundRoutes);
