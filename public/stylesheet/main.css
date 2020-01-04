@@ -54,3 +54,36 @@ ul.nav.navbar-nav.navbar-right li a{
     font-size: 25px;
 
 }
+
+.LI-badge-container-horizontal-dark.LI-badge-container.horizontal.dark.large{
+   /* background-color: green; */
+    width: 80%;
+    display: block;
+    padding: 10x 15%;
+    margin: 10px 10%;
+
+}
+#linkedin{
+   /* background: red; */
+    padding: 0 10%;
+    margin: auto;
+    width: 80%;
+}
+#contactMed{
+    padding : 5px 26%;
+   
+    
+}
+#contactMed h3{
+    display: inline;
+    font: 30px gray ;
+    font-family: 'Courier New', Courier, monospace;
+}
+#contactMed a {
+    
+    font-size: 15px;
+    padding: 0 10px;
+}
+#contactMed a:hover{
+    font-size: 20px;
+}
