@@ -71,9 +71,8 @@ ul.nav.navbar-nav.navbar-right li a{
     min-width: 199px;
  }
 #contactMed{
-    padding : 5px 26%;
-   
-    
+    margin : 5px auto;
+    text-align: center;    
 }
 #contactMed h3{
     display: inline;
