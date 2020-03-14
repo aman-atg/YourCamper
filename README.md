@@ -2,8 +2,6 @@
 
 A camping site for Adventure Seekers. Do check out some of the most beautiful camping grounds in India.
 
-Press any key, A to Z, enjoy animations with sounds.
-
 ## Getting Started
 
 Start by cloning the repo : 
