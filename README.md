@@ -30,19 +30,19 @@ node app.js
 ## Built With
 
 
-* [Nodejs] (https://nodejs.org/en/) - Node.js® is a JavaScript runtime built on Chrome's V8 JavaScript engine.
-* [Exprees.js] (https://expressjs.com) - Fast, unopinionated, minimalist web framework for Node.js
-* [Javascript] (https://www.javascript.com/) - High-level, interpreted programming language
-* [MongoDB] (https://www.mongodb.com/cloud) - Global cloud database service
-* [EJS] (https://ejs.co) - Embedded JavaScript templating
-* [Mongoose] (https://mongoosejs.com/) - elegant mongodb object modeling for node.js
-* [Passport] (http://www.passportjs.org/) - Simple, unobtrusive authentication for Node.js
-* [HTML] (https://www.html.com/) - Standard markup language
-* [CSS] (https://css.com) - Style sheet language
+* [Nodejs](https://nodejs.org/en/) - Node.js® is a JavaScript runtime built on Chrome's V8 JavaScript engine.
+* [Exprees.js](https://expressjs.com) - Fast, unopinionated, minimalist web framework for Node.js
+* [Javascript](https://www.javascript.com/) - High-level, interpreted programming language
+* [MongoDB](https://www.mongodb.com/cloud) - Global cloud database service
+* [EJS](https://ejs.co) - Embedded JavaScript templating
+* [Mongoose](https://mongoosejs.com/) - elegant mongodb object modeling for node.js
+* [Passport](http://www.passportjs.org/) - Simple, unobtrusive authentication for Node.js
+* [HTML](https://www.html.com/) - Standard markup language
+* [CSS](https://css.com) - Style sheet language
 
 ## Authors
 
-* **Aman Ansari** (https://github.com/aman-atg)
+* **[Aman Ansari](https://github.com/aman-atg)**
 
 ## License
 
