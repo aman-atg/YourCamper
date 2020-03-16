@@ -1,4 +1,6 @@
 # YourCamper
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Faman-atg%2FYourCamper.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Faman-atg%2FYourCamper?ref=badge_shield)
+
 
 A camping site for Adventure Seekers. Do check out some of the most beautiful camping grounds in India.
 
@@ -51,7 +53,9 @@ node app.js
 
 This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/aman-atg/YourCamper/blob/master/LICENSE) file for details
 
+
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Faman-atg%2FYourCamper.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Faman-atg%2FYourCamper?ref=badge_large)
+
 ## Acknowledgments
 
 * https://www.udemy.com/course/the-web-developer-bootcamp/
-
