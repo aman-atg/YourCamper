@@ -1,6 +1,6 @@
 # YourCamper
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Faman-atg%2FYourCamper.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Faman-atg%2FYourCamper?ref=badge_shield)
-
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
 A camping site for Adventure Seekers. Do check out some of the most beautiful camping grounds in India.
 
