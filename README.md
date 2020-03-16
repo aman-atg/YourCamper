@@ -37,6 +37,9 @@ node app.js
 * [EJS](https://ejs.co) - Embedded JavaScript templating
 * [Mongoose](https://mongoosejs.com/) - elegant mongodb object modeling for node.js
 * [Passport](http://www.passportjs.org/) - Simple, unobtrusive authentication for Node.js
+* [Bootstrap-4](https://getbootstrap.com) -  the most popular HTML, CSS, and JavaScript framework for developing responsive, mobile-first websites
+* [SemanticUI](https://semantic-ui.com/) - A development framework that helps create beautiful, responsive layouts using human-friendly HTML
+* [FontAwesome](https://fontawesome.com/) - The web's most popular icon set and toolkit
 * [HTML](https://www.html.com/) - Standard markup language
 * [CSS](https://css.com) - Style sheet language
 
